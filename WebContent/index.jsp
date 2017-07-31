@@ -7,5 +7,6 @@
 </head>
 <body>
 	<a href="test.do">测试</a>
+	<a href="user/list.do">查询用户信息</a>
 </body>
 </html>

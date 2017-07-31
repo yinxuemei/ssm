@@ -13,6 +13,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查询用户信息 -->
 	<select id="getUserList" parameterType="UserInfo" resultMap="userMap">
 		select * from user_info
+		<where>
+		<if test="userId!=null and userId!=''">
+		and user_id=#{userId}
+		</if>
+		<if test="userName!=null and userName!=''">
+		and user_name like #{userName}
+		</if>
+		</where>
 	</select>
 	<!-- 添加 -->
 	<insert id="addUser" parameterType="UserInfo">

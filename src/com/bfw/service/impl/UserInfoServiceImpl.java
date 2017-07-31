@@ -38,6 +38,14 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public List<UserInfo> getUserList(UserInfo user) {
 		// TODO Auto-generated method stub
+		// 模糊查询
+		if(user!=null){
+			
+			if(user.getUserName()!=null && !user.getUserName().equals("")){
+				
+				user.setUserName("%"+user.getUserName()+"%");
+			}
+		}
 		
 		List<UserInfo> list=userInfoMapper.getUserList(user);
 		return list;

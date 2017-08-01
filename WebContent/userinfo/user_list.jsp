@@ -15,7 +15,12 @@ String basePath = request.getScheme() + "://"
 <head>
 <base href="<%=basePath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>用户列表显示</title>
+<script type="text/javascript">
+function add(){
+	window.location= "<%=basePath %>userinfo/user_add.jsp";
+}
+</script>
 </head>
 <body>
 	<div align="center">
@@ -24,6 +29,7 @@ String basePath = request.getScheme() + "://"
 			编号：<input type="text" name="userId" />
 			 姓名：<input type="text" name="userName" /> 
 			 <input type="submit" value="查询" />
+			 <input type="button" value="添加" onclick="add()"/>
 		</form>
 
 	</div>

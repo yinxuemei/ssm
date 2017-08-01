@@ -26,5 +26,26 @@ public class UserInfoController {
 		
 		return "userinfo/user_list";
 	}
+	@RequestMapping("/add.do")
+	public String add(UserInfo user,Model model){
+		System.out.println(user+"oooooeeeeeeeeeeeeeeeeeeeeeeeeeee");
+		boolean mark = false;
+		try {
+			
+			mark = service.addUser(user);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(mark){
+			model.addAttribute("info", "用户信息添加成功！");
+		}else{
+			model.addAttribute("info", "用户信息添加失败！");
+		}
+		
+		
+		return "userinfo/user_info";
+	}
 
 }

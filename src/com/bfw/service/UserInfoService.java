@@ -11,7 +11,7 @@ public interface UserInfoService {
 	 * @param user �û���Ϣ
 	 * @return
 	 */
-	public boolean addUser(UserInfo user);
+	public boolean addUser(UserInfo user)throws Exception;
 	/**
 	 * 查询用户信息
 	 * @param user查询条件

@@ -21,11 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and user_name like #{userName}
 		</if>
 		</where>
+order by user_id desc
 	</select>
 	<!-- 添加 -->
 	<insert id="addUser" parameterType="UserInfo">
-		insert into user_info (user_id,user_name,user_age,user_sex)
-		values(#{userId},#{userName},#{userAge},#{userSex})
+		insert into user_info (user_id,user_name,user_age,user_sex,user_brithday)
+		values(#{userId},#{userName},#{userAge},#{userSex},now())
 	</insert>
 
 

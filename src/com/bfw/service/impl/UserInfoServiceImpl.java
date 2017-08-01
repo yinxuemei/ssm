@@ -24,7 +24,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public boolean addUser(UserInfo user) {
 		
-		System.out.println("------业务逻辑层----------");
+//		System.out.println("------业务逻辑层----------");
 		
 		int count = userInfoMapper.addUser(user);
 		

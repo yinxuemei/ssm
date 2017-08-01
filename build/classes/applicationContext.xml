@@ -10,7 +10,8 @@
 	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
+	
+    <!--  测试去掉，需要扫描 -->
 	<!-- <context:component-scan base-package="com.bfw.service"></context:component-scan> -->
 
 	<!-- 数据源配置 -->

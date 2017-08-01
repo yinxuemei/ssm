@@ -18,4 +18,18 @@ public interface UserInfoService {
 	 * @return
 	 */
 	public List<UserInfo> getUserList(UserInfo user);
+	
+	/**
+	 * 根据编号查询用户信息
+	 * @param userId查询条件
+	 * @return
+	 * @throws Exception
+	 */
+	public UserInfo getUser(Integer userId)throws Exception;
+	/**
+	 * 修改用户信息
+	 * @param user
+	 * @return
+	 */
+	public boolean updateUser(UserInfo user);
 }

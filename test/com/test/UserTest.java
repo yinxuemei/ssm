@@ -45,4 +45,14 @@ public class UserTest {
 					System.out.println(user);
 				}
 	}
+	@Test
+	public void selectUser2()throws Exception{
+		//加载applicationContext.xml 配置文件  在上下文中获取BEAN
+				ApplicationContext context = new ClassPathXmlApplicationContext(
+						"applicationContext.xml");
+				UserInfoService service = (UserInfoService)context.getBean("userInfoServiceImpl");
+				UserInfo user=service.getUser(44);
+					System.out.println(user);
+				
+	}
 }

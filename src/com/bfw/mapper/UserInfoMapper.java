@@ -18,5 +18,16 @@ public interface UserInfoMapper {
 	 * @return返回用户信息
 	 */
 	public List<UserInfo> getUserList(UserInfo user);
-	
+	/**
+	 * 根据编号查询用户信息
+	 * @param userId查询条件
+	 * @return
+	 */
+	public UserInfo getUser(Integer userId); 
+	/**
+	 * 用户信息修改
+	 * @param user
+	 * @return返回影响的行数
+	 */
+	public int updateUser(UserInfo user);
 }

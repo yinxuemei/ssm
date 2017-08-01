@@ -18,6 +18,8 @@ import com.bfw.service.UserInfoService;
 @Service
 public class UserInfoServiceImpl implements UserInfoService{
 	
+
+
 	@Resource(name="userInfoMapper")
 	private UserInfoMapper userInfoMapper;
 
@@ -49,6 +51,26 @@ public class UserInfoServiceImpl implements UserInfoService{
 		
 		List<UserInfo> list=userInfoMapper.getUserList(user);
 		return list;
+	}
+	
+	@Override
+	public UserInfo getUser(Integer userId) throws Exception {
+		if(userId!=null){
+			UserInfo user=userInfoMapper.getUser(userId);		
+			return user;
+		}
+		return null;
+	}
+
+	@Override
+	public boolean updateUser(UserInfo user) {
+		if(user!=null){
+			int count=userInfoMapper.updateUser(user);
+			if(count>0)
+				return true;
+		}
+		
+		return false;
 	}
 
 }

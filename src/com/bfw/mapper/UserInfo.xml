@@ -14,21 +14,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserList" parameterType="UserInfo" resultMap="userMap">
 		select * from user_info
 		<where>
-		<if test="userId!=null and userId!=''">
-		and user_id=#{userId}
-		</if>
-		<if test="userName!=null and userName!=''">
-		and user_name like #{userName}
-		</if>
+			<if test="userId!=null and userId!=''">
+				and user_id=#{userId}
+			</if>
+			<if test="userName!=null and userName!=''">
+				and user_name like #{userName}
+			</if>
 		</where>
-order by user_id desc
+		order by user_id desc
 	</select>
 	<!-- 添加 -->
 	<insert id="addUser" parameterType="UserInfo">
-		insert into user_info (user_id,user_name,user_age,user_sex,user_brithday)
+		insert into user_info
+		(user_id,user_name,user_age,user_sex,user_brithday)
 		values(#{userId},#{userName},#{userAge},#{userSex},now())
 	</insert>
+	<!-- 根据编号查询用户信息 -->
+	<select id="getUser" parameterType="java.lang.Integer"
+		resultMap="userMap">
+		select * from user_info where user_id=#{userId}
+	</select>
+	<!-- 用户信息修改 -->
+	<update id="updateUser" parameterType="UserInfo">
+		update user_info
+		<set>
+			<if test="userName!=null">user_name=#{userName},</if>
 
-
+			<if test="userAge!=null">user_Age=#{userAge},</if>
+			<if test="userSex!=null">user_Sex=#{userSex},</if>
+			<if test="userBrithday!=null">user_Brithday=#{userBrithday},</if>
+		</set>
+		where user_Id=#{userId}
+	</update>
+	<!-- 修改用户信息 -->
 
 </mapper>

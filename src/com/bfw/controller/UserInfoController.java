@@ -47,5 +47,33 @@ public class UserInfoController {
 		
 		return "userinfo/user_info";
 	}
+	@RequestMapping("/loadUser.do")
+	public String loadUser(Integer userId,Model model){
+		System.out.println("编号"+userId);
+		try {
+			UserInfo user=service.getUser(userId);
+			model.addAttribute("user", user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "userinfo/user_update";
+	}
+	@RequestMapping("/update.do")
+	public String update(UserInfo user,Model model){
+		boolean mark=false;
+		try {
+			mark=service.updateUser(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(mark){
+			model.addAttribute("info", "用户信息修改成功！");
+		}else{
+			model.addAttribute("info", "用户信息修改失败！");
+		}
+		return "userinfo/user_info";
+	}
 
 }

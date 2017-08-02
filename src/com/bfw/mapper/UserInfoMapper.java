@@ -30,4 +30,10 @@ public interface UserInfoMapper {
 	 * @return返回影响的行数
 	 */
 	public int updateUser(UserInfo user);
+	/**
+	 * 删除用户
+	 * @param user
+	 * @return
+	 */
+	public int delUser(Integer userId);
 }

@@ -44,8 +44,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="userSex!=null">user_Sex=#{userSex},</if>
 			<if test="userBrithday!=null">user_Brithday=#{userBrithday},</if>
 		</set>
-		where user_Id=#{userId}
+		where user_id=#{userId}
 	</update>
-	<!-- 修改用户信息 -->
+	<!-- 删除用户信息 -->
+	<delete id="delUser" parameterType="java.lang.Integer">
+	delete from user_info where user_id=#{userId}
+</delete>
 
 </mapper>

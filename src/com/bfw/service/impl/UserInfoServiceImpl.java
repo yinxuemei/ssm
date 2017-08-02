@@ -73,4 +73,14 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return false;
 	}
 
+	@Override
+	public boolean deleterUser(Integer[] userIds) {
+		if(userIds.length>0){
+		for(Integer userId:userIds){
+			userInfoMapper.delUser(userId);
+		}
+		return true;
+		}
+		return false;
+	}
 }

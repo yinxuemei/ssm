@@ -32,4 +32,10 @@ public interface UserInfoService {
 	 * @return
 	 */
 	public boolean updateUser(UserInfo user);
+	/**
+	 * 删除用户信息
+	 * @param user
+	 * @return
+	 */
+	public boolean deleterUser(Integer[] userIds);
 }

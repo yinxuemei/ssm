@@ -75,5 +75,22 @@ public class UserInfoController {
 		}
 		return "userinfo/user_info";
 	}
+	@RequestMapping("/deleteUser.do")
+	public String deleteUser(Integer[] userIds,Model model){
+		boolean mark=false;
+		System.out.println("长度："+userIds.length);
+		try {
+			mark=service.deleterUser(userIds);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(mark){
+			model.addAttribute("info", "用户信息删除成功！");
+		}else{
+			model.addAttribute("info", "用户信息删除失败！");
+		}
+		return "userinfo/user_info";
+	}
 
 }

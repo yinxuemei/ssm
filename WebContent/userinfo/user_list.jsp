@@ -6,9 +6,11 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<!-- 时间格式yyyy年mm月dd日 -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- display表格插件引入 -->
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,12 +35,22 @@
 			//获取表单元素对象
 			var f1=document.getElementById("f1");
 			f1.action='<%=basePath%>user/deleteUser.do';//改变提交目的地（url）
-			f1.submit();	
-		}else{
+			f1.submit();
+		} else {
 			alert("请选择一个用户");
 		}
 	}
 </script>
+<style type="text/css">
+.tab{ width: 90%;
+	text-align: center;
+	background-color: green;
+}
+
+.tab tr th { background-color: white;}
+
+.tab tr td { background-color: white;}
+</style>
 </head>
 <body>
 	<form action="user/list.do" method="post" id="f1">
@@ -53,7 +65,18 @@
 
 		</div>
 
-		<table border="1" align="center" width="80%">
+		<display:table  name="list" class="tab" export="true" sort="list" pagesize="10" requestURI="user/list.do">
+			<display:column property="delId" title="<input type='checkbox'>" />
+			<display:column property="userId" title="编号" sortable="true"/>
+			<display:column property="userName" title="姓名" />
+			<display:column property="userSex" title="性别" sortable="true"/>
+			<display:column property="userAge" title="年龄"/>
+			<display:column property="userBrithday" title="日期"/>
+			<display:column value="sssswww@qq.com" autolink="true" title="电子邮件"/>
+			<display:column value="http://www.baidu.com" autolink="true" title="电子邮件"/>
+			<display:column href="user/loadUser.do" paramId="userId" paramProperty="userId" value="修改" title="修改" />
+		</display:table>
+		<%-- <table border="1" align="center" width="80%">
 			<tr>
 				<th></th>
 				<th>编号</th>
@@ -76,7 +99,7 @@
 							pattern="yyyy年MM月dd日" /></td>
 					<td><a href="user/loadUser.do?userId=${user.userId }">修改</a></td>
 			</c:forEach>
-		</table>
+		</table> --%>
 	</form>
 </body>
 </html>

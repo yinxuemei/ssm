@@ -3,6 +3,10 @@ package com.bfw.po;
 import java.util.Date;
 
 public class UserInfo {
+private String delId;
+	public String getDelId() {
+	return "<input type='checkbox' name='userIds' value='"+this.getUserId()+"'>";
+}
 
 	private Integer userId;
 
